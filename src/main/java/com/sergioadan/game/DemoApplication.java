@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.sergioadan.game;
 
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 public class DemoApplication {
 
 
-//test
 	@GetMapping("/")
 	public String home() {
 		return "Spring is here!";
