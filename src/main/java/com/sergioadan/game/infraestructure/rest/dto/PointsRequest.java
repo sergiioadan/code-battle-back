@@ -1,8 +1,23 @@
 package com.sergioadan.game.infraestructure.rest.dto;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 public class PointsRequest {
+
+
     private String player;
+    private String level;
     private int points;
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
     public String getPlayer() {
         return player;

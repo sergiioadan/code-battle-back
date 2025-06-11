@@ -20,11 +20,22 @@ public class Points {
     private Long id;
 
     private String player;
+    private String level;
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
     private int points;
 
-    public Points(String player, int pointsNow) {
+    public Points(String player, int pointsNow,String level) {
         this.points = pointsNow;
         this.player = player;
+        this.level = level;
     }
 
 
