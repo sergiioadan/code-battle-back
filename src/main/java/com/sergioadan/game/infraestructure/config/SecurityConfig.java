@@ -39,7 +39,7 @@
                     .authorizeHttpRequests(auth -> auth
                             .requestMatchers("/auth/**", "/h2-console/**").permitAll() // <--- PERMITIR
                             .anyRequest().authenticated()
-                    )
+                   )
                     .sessionManagement(session -> session
                             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     )

@@ -1,5 +1,6 @@
 package com.sergioadan.game.infraestructure.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -8,7 +9,10 @@ public class PointsRequest {
 
 
     private String player;
+
+    @JsonProperty("nivel")
     private String level;
+
     private int points;
 
     public String getLevel() {

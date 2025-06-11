@@ -8,4 +8,7 @@ import java.util.Optional;
 public interface PointsRepository extends JpaRepository<Points,String> {
 
     Optional<Points> findByPlayer (String player);
+
+    Optional<Points> findByPlayerAndLevel (String player,String level);
+
 }

@@ -30,16 +30,14 @@ public class AuthService {
         this.securityConfig = securityConfig;
     }
 
-    public String register(String username, String password) {
+    public void register(String username, String password) {
         if (userRepository.findByUsername(username).isPresent()) {
             throw new RuntimeException("Usuario ya existe");
         }
-
-        Users user = new Users();
+        var user = new Users();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
-        return jwtService.generateToken(user);
     }
 
     public String login(String username, String password) {

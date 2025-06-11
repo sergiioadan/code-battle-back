@@ -27,6 +27,7 @@ public class GameController {
 
         String username = AuthUtils.getCurrentUsername();
         var pointsSaved = service.result(username,request.getPoints(),request.getLevel());
+        System.out.println("Nivel recibido: " + request.getLevel());
         log.info("Se ha guardado" + pointsSaved);
         return ResponseEntity.ok(pointsSaved);
     }
