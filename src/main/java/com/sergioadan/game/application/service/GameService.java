@@ -20,17 +20,17 @@ public class GameService {
     }
 
 
-    public int result(String player, int pointsNow, String level) {
+    public int result(String player, int pointsNow, String level,int hits) {
         return repository.findByPlayerAndLevel(player, level)
                 .map(actual -> {
-                    if (pointsNow > actual.getPoints()) {
+                    if (pointsNow > actual.getPoints() && hits >= 7) {
                         actual.setPoints(pointsNow);
                         repository.save(actual);
                     }
                     return actual.getPoints();
                 })
                 .orElseGet(() -> {
-                    repository.save(new Points(player, pointsNow, level));
+                    repository.save(new Points(player, pointsNow, level,hits));
                     return pointsNow;
                 });
     }

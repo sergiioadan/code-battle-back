@@ -15,6 +15,16 @@ public class PointsRequest {
 
     private int points;
 
+    private int hits;
+
+    public int getHits() {
+        return hits;
+    }
+
+    public void setHits(int hits) {
+        this.hits = hits;
+    }
+
     public String getLevel() {
         return level;
     }
