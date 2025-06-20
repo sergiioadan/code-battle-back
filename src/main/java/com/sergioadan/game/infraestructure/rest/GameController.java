@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,18 +47,31 @@ public class GameController {
     }
     @GetMapping("/progress")
     public ResponseEntity<?> getProgress(@RequestParam String username) {
-        List<Points> points = pointsRepository.findByPlayer(username);
-        Map<String, Boolean> progreso = new HashMap<>();
+        List<Points> pointsList = pointsRepository.findByPlayer(username);
+        Map<String, Map<String, Integer>> progreso = new HashMap<>();
 
-        for (Points p : points) {
-            if (p.getHits() >= 7) {
-                progreso.put(p.getLevel(), true);
-            } else {
-                progreso.put(p.getLevel(), false);
-            }
+        for (Points p : pointsList) {
+            Map<String, Integer> datos = new HashMap<>();
+            datos.put("hits", p.getHits());
+            datos.put("points", p.getPoints());
+            progreso.put(p.getLevel(), datos);
         }
 
         return ResponseEntity.ok(progreso);
     }
-    
+    @GetMapping("/ranking")
+    public ResponseEntity<List<Map<String, Object>>> getRanking() {
+        List<Object[]> rawData = pointsRepository.findTop10PlayersByTotalPoints();
+        List<Map<String, Object>> ranking = new ArrayList<>();
+
+        for (Object[] row : rawData) {
+            Map<String, Object> jugador = new HashMap<>();
+            jugador.put("username", row[0]);
+            jugador.put("totalPoints", row[1]);
+            ranking.add(jugador);
+        }
+
+        return ResponseEntity.ok(ranking);
+    }
+
 }
