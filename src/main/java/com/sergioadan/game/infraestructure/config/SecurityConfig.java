@@ -37,7 +37,9 @@
                             .frameOptions(frame -> frame.sameOrigin()) // Permite iframes desde el mismo origen
                     )
                     .authorizeHttpRequests(auth -> auth
-                            .requestMatchers("/auth/**", "/h2-console/**").permitAll() // <--- PERMITIR
+                            .requestMatchers("/auth/**", "/h2-console/**").permitAll()
+                                    .requestMatchers("/search").authenticated() // << Esto permite acceso si el usuario tiene token válido
+// <--- PERMITIR
                             .anyRequest().authenticated()
                    )
                     .sessionManagement(session -> session

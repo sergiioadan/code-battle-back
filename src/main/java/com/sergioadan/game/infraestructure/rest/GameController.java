@@ -6,6 +6,7 @@ import com.sergioadan.game.domain.repository.PointsRepository;
 import com.sergioadan.game.infraestructure.helper.AuthUtils;
 import com.sergioadan.game.infraestructure.rest.dto.AnswerRequest;
 import com.sergioadan.game.infraestructure.rest.dto.PointsRequest;
+import com.sergioadan.game.infraestructure.rest.dto.UsersDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -33,7 +33,7 @@ public class AuthService {
     public void register(String username, String password) {
         if (userRepository.findByUsername(username).isPresent()) {
             throw new RuntimeException("Usuario ya existe");
-        }
+            }
         var user = new Users();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
