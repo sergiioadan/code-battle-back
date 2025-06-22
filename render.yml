@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: backend-juego
+    env: docker
+    plan: free
+    autoDeploy: true
+    branch: main
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: PORT
+        value: 8080
