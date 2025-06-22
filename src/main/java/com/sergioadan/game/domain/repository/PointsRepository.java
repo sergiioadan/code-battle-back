@@ -18,4 +18,6 @@ public interface PointsRepository extends JpaRepository<Points,String> {
     List<Object[]> findTop10PlayersByTotalPoints();
 
 
+
+
 }
