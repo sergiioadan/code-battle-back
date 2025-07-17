@@ -23,11 +23,9 @@ public class GameService {
     public int result(String player, int pointsNow, String level,int hits) {
         return repository.findByPlayerAndLevel(player, level)
                 .map(actual -> {
-                    if (pointsNow > actual.getPoints() && hits >= 7) {
+                    if (pointsNow > actual.getPoints() || (pointsNow == actual.getPoints() && hits > actual.getHits())) {
                         actual.setPoints(pointsNow);
-                        if (hits > actual.getHits()) {
-                            actual.setHits(hits);
-                        }
+                        actual.setHits(hits);
                         repository.save(actual);
                     }
                     return actual.getPoints();
