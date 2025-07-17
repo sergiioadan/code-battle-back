@@ -25,7 +25,9 @@ public class GameService {
                 .map(actual -> {
                     if (pointsNow > actual.getPoints() && hits >= 7) {
                         actual.setPoints(pointsNow);
-                        actual.setHits(hits);
+                        if (hits > actual.getHits()) {
+                            actual.setHits(hits);
+                        }
                         repository.save(actual);
                     }
                     return actual.getPoints();
